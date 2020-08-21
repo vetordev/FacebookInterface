@@ -104,9 +104,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 4,
+
+    
   },
   loginText: {
     color: '#fff',
+
+    fontFamily: 'Roboto',
+    fontWeight: 'bold'
   },
   forgotPasswordText: {
     color: '#266dcc',
