@@ -1,8 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Linking, Alert } from 'react-native';
 
 export default function App() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  function login() {
+    if (email == 'tmaula@gmail.com' && password == 'complicada123') {
+      Alert.alert('Login', 'Você foi logado no Facebook!')
+    }
+    else {
+      Alert.alert('Falha no login', 'Utilize os dados abaixo\nEmail: tmaula@gmail.com\nSenha: complicada123')
+    }
+  };
 
   return (
     <>
@@ -17,10 +28,27 @@ export default function App() {
 
       <View style={styles.formContainer}>
 
-        <TextInput style={styles.emailInput} placeholder="Telefone ou email"/>
-        <TextInput style={styles.passwordInput} placeholder="Senha"/>
+        <TextInput 
+          style={styles.emailInput}
+          placeholder="Telefone ou email"
+          value={email}
+          onChangeText={email => setEmail(email)}
+        />
 
-        <TouchableOpacity style={styles.loginButton} activeOpacity={0.65}>
+        <TextInput
+          style={styles.passwordInput}
+          placeholder="Senha"
+          value={password}
+          onChangeText={password => setPassword(password)}
+          secureTextEntry={true}
+        />
+
+        <TouchableOpacity
+          style={styles.loginButton}
+          activeOpacity={0.65}
+          onPress={login}
+          
+        >
           <Text style={styles.loginText}>Entrar</Text>
         </TouchableOpacity>
 
